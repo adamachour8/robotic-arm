@@ -7,8 +7,8 @@ import numpy as np
 # Infill 20%
 
 # Dimensions (mm pour RDM, cm pour masses)
-L1_cm, L2_cm, L3_cm = 10, 8, 6
-L1, L2, L3 = 100, 80, 60
+L1_cm, L2_cm, L3_cm = 12, 10, 7
+L1, L2, L3 = 120, 100, 70
 
 # Section rectangulaire creuse
 b_ext = 30

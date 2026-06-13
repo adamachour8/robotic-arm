@@ -17,9 +17,9 @@ Hbase = 5  # hauteur de la base
 Lbase = 6  # cote de la base carre
 
 # Dimensions des membres en cm
-L1 = 10
-L2 = 8
-L3 = 6
+L1 = 12
+L2 = 10
+L3 = 7
 
 
 def fw_2d():

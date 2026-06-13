@@ -1,7 +1,7 @@
 # Dimensions des membres en cm
-L1 = 10
-L2 = 8
-L3 = 6
+L1 = 12
+L2 = 10
+L3 = 7
 
 # Section transversale estimée des membres (cm²)
 # Profil creux rectangulaire ~2cm x 3cm, épaisseur paroi 2mm
