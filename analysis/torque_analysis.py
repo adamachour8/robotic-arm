@@ -24,7 +24,7 @@ densites = {
 infill = 0.20
 
 # Choix du matériau
-materiau = "PETG"
+materiau = "PLA"
 rho = densites[materiau]
 
 # Masses des membres (g) = densité × section × longueur × infill
