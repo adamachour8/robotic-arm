@@ -4,7 +4,7 @@ from matplotlib.widgets import Slider
 
 # Plages de mouvement (range total)
 range2 = 160  # épaule peut balayer 120°
-range3 = 140  # coude
+range3 = 160  # coude
 range4 = 160  # poignet
 
 # Position actuelle (ce que le slider va contrôler)
@@ -13,7 +13,7 @@ theta3 = 0
 theta4 = 0
 
 # Dimensions de la bas
-Hbase = 5  # hauteur de la base
+Hbase = 7  # hauteur de la base
 Lbase = 6  # cote de la base carre
 
 # Dimensions des membres en cm
