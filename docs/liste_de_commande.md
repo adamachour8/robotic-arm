@@ -1,4 +1,4 @@
-# Liste de commande — Composants électriques
+# Liste de commande — Bras robotique 4-DOF
 
 ## Actionneurs
 
@@ -27,9 +27,10 @@
 
 | Qté | Composant | Prix approx |
 |---|---|---|
-| 1× | Bloc secteur 5-6V 5A | ~12$ |
+| 1× | Bloc secteur 5V 5A | ~12$ |
 | 1× | Fusible 5A + porte-fusible | ~3$ |
 | 1× | Câble USB (ESP32) | ~3$ |
+| 1× | DC barrel jack | ~1$ |
 
 ## Câblage
 
@@ -38,4 +39,27 @@
 | 1× | Pack fils Dupont M-F et F-F | ~5$ |
 | 1× | Fil AWG 18 (alimentation) | ~5$ |
 
-## Total estimé : ~80-90$
+## Visserie et fixations
+
+| Qté | Composant | Prix approx |
+|---|---|---|
+| 1× | Kit vis M3 assorties (6, 8, 10, 12, 16 mm) countersunk | ~8$ |
+| 1× | Pack écrous M3 standard | ~3$ |
+| 1× | Pack écrous M3 nyloc | ~3$ |
+| 1× | Pack heat-set inserts M3 (4.5 mm ext) | ~8$ |
+| 1× | Pack vis M2 × 10 mm (gripper, si nécessaire) | ~3$ |
+
+## Horns et roulement
+
+| Qté | Composant | Specs | Prix approx |
+|---|---|---|---|
+| 3× | Horn métal 25T disc (θ1, θ2, θ3) | 20 mm, M3 fileté | ~3$ ch. |
+| 1× | Roulement 6810 (base) | 50×65×7 mm | ~5$ |
+
+## Impression 3D
+
+| Qté | Composant | Prix approx |
+|---|---|---|
+| ~200g | Filament PLA | dispo biblio |
+
+## Total estimé : ~125-140$
