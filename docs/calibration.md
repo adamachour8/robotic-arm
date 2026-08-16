@@ -1,0 +1,7 @@
+# Calibration
+
+Base (MG996R, CH0): CONTINU - à remplacer
+Shoulder (DS3218, CH1): min=80, center=330, max=580
+Elbow (MG996R, CH2): CONTINU - à remplacer
+Wrist (MG90S, CH3): min=95, center=333, max=570
+Gripper (SG90, CH4): min=100, center=333, max=565

@@ -18,7 +18,7 @@ void loop()
         int off = input.toInt();
         if (off > 0)
         {
-            pca.setPWM(1, 0, off);
+            pca.setPWM(3, 0, off);
             Serial.println(off);
         }
     }
