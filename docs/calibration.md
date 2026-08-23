@@ -14,7 +14,7 @@ Link 2 = horn shoulder + avant-bras + corps du servo elbow
 Link 3 = horn elbow + gripper + SG90
 44g; L=10.5cm; Target=9.5-10cm
 
-## Ranges angulaires
+## Ranges angulaires (avec point de depart base a 180, droite = 0°)
 Base (θ1): 180° à 0°
 Shoulder (θ2): 0° à 180° (reach -90°)
 Elbow (θ3): -180° à -90° (reach 0°)
