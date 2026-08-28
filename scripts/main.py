@@ -34,10 +34,7 @@ def main():
                 print(f"  theta3 (elbow)    = {t3:.2f}°")
 
                 x2, y2, z2 = fk(t1, t2, t3)
-                print(f"\nVérification FK:")
-                print(f"  x = {x2:.2f} cm (cible: {x:.2f})")
-                print(f"  y = {y2:.2f} cm (cible: {y:.2f})")
-                print(f"  z = {z2:.2f} cm (cible: {z:.2f})")
+
         else:
             print("Tape 'fk', 'ik' ou 'q'")
 

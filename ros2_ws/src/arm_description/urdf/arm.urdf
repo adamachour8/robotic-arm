@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot name="robotic_arm">
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+    <material name="green">
+        <color rgba="0 0.6 0 1"/>
+    </material>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.09 0.09 0.05"/>
+            </geometry>
+            <origin xyz="0.015 -0.015 0.025" rpy="0 0 0"/>
+            <material name="green" />
+        </visual>
+    </link>
+        
+    <joint name="teta_1" type="revolute">
+        <parent link="base_link"/>
+        <child link="link_1"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="0" upper="3.1416" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    <link name="link_1">
+        <visual>
+            <geometry>
+                <cylinder radius="0.03" length="0.003"/>
+            </geometry>
+            <origin xyz="0.01 0 0.0015" rpy="0 0 0"/>
+            <material name="black" />
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.062 0.05 0.03"/>
+            </geometry>
+            <origin xyz="0.005 -0.025 0.015" rpy="0 0 0"/>
+            <material name="green">
+                <color rgba="0 0.6 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="teta_2" type="revolute">
+        <parent link="link_1"/>
+        <child link="link_2"/>
+        <origin xyz="0.01 -0.05 0.012" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="0" upper="3.1416" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    <link name="link_2">
+        <visual>
+            <geometry>
+                <cylinder radius="0.01" length="0.14"/>
+            </geometry>
+            <origin xyz="0 -0.005 0.06" rpy="0 0 0"/>
+            <material name="black" />
+        </visual>
+    </link>
+
+
+</robot>

@@ -6,9 +6,10 @@ L1 = 12.0
 OFFSET = 2.5
 L2 = 20.5
 
-# Constantes calculées
-AC = math.sqrt(L1**2 + OFFSET**2)
-EPSILON = math.atan2(OFFSET, L1)
+# Constantes géométriques (step 0)
+AC = math.sqrt(L1**2 + OFFSET**2)  # 12.26 cm
+CD = L2  # 20.5 cm
+BAC = math.atan2(OFFSET, L1)  # ≈ 11.7° (rad)
 
 
 def fk(theta1_deg, theta2_deg, theta3_deg):
@@ -16,7 +17,7 @@ def fk(theta1_deg, theta2_deg, theta3_deg):
     t2 = math.radians(theta2_deg)
     t3 = math.radians(theta3_deg)
 
-    r = L1 * math.cos(t2) + OFFSET * math.sin(t2) + L2 * math.cos(t2 + t3)
+    r = L1 * math.cos(t2) - OFFSET * math.sin(t2) + L2 * math.cos(t2 + t3)
     z = BASE_HEIGHT + L1 * math.sin(t2) + OFFSET * math.cos(t2) + L2 * math.sin(t2 + t3)
     x = r * math.cos(t1)
     y = r * math.sin(t1)
@@ -25,34 +26,56 @@ def fk(theta1_deg, theta2_deg, theta3_deg):
 
 
 def ik(x, y, z):
+    # 1) θ₁
     theta1 = math.atan2(y, x)
 
-    r = math.sqrt(x**2 + y**2)
+    # 2) r signé, z'
+    r = x * math.cos(theta1) + y * math.sin(theta1)
     z_prime = z - BASE_HEIGHT
 
+    # 3) AD, ∠DAE
     AD = math.sqrt(r**2 + z_prime**2)
 
-    if AD > AC + L2 or AD < abs(AC - L2):
+    if AD > AC + CD or AD < abs(AC - CD):
         print(f"Point ({x}, {y}, {z}) hors de portée!")
         return None
 
-    cos_a = (AC**2 + AD**2 - L2**2) / (2 * AC * AD)
-    cos_a = max(-1, min(1, cos_a))
-    angle_A = math.acos(cos_a)
+    DAE = math.atan2(z_prime, r)
 
-    cos_d = (L2**2 + AD**2 - AC**2) / (2 * L2 * AD)
-    cos_d = max(-1, min(1, cos_d))
-    angle_D = math.acos(cos_d)
+    # 4) Loi des cosinus sur △ACD
+    cos_CAD = (AC**2 + AD**2 - CD**2) / (2 * AC * AD)
+    cos_CAD = max(-1, min(1, cos_CAD))
+    CAD = math.acos(cos_CAD)
 
-    alpha = math.atan2(z_prime, r)
+    cos_ACD = (AC**2 + CD**2 - AD**2) / (2 * CD * AC)
+    cos_ACD = max(-1, min(1, cos_ACD))
+    ACD = math.acos(cos_ACD)
 
-    theta2 = alpha + angle_A - EPSILON
+    # 5) θ₂, θ₃
+    theta2 = DAE + CAD - BAC
+    theta3 = ACD - (2 * BAC) - math.pi / 2 + DAE
 
-    angle_C = math.pi - angle_A - angle_D
-    theta3 = -(angle_C - EPSILON)
+    return math.degrees(theta1), math.degrees(theta2), math.degrees(theta3)
 
-    t1 = math.degrees(theta1)
-    t2 = math.degrees(theta2)
-    t3 = math.degrees(theta3)
 
-    return t1, t2, t3
+test_cases = [
+    (90, 0, -110),
+    (90, 45, -135),
+    (90, 60, -120),
+    (90, 100, -140),
+    (90, 90, -150),
+    (90, 30, -115),
+    (90, 135, -160),
+    (90, 10, -170),
+]
+
+for t1, t2, t3 in test_cases:
+    pos = fk(t1, t2, t3)
+    result = ik(*pos)
+    if result is None:
+        continue
+    ang_err = max(abs(a - b) for a, b in zip((t1, t2, t3), result))
+    status = "✓" if ang_err < 0.1 else "✗"
+    print(
+        f"{status} IN({t1:4},{t2:4},{t3:4}) -> IK({result[0]:7.2f},{result[1]:7.2f},{result[2]:7.2f})  err={ang_err:.2f}°"
+    )

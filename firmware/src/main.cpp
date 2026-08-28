@@ -23,8 +23,8 @@ int tickZero[NUM_JOINTS] = {105, 180, 500, 90};
 int startTick[NUM_JOINTS] = {580, 320, 100, 90};
 int currentTick[NUM_JOINTS] = {580, 320, 100, 90};
 float ratio[NUM_JOINTS] = {0.36, 0.643, 0.4, 1.0};
-float angleMin[NUM_JOINTS] = {45, 0, -160, 0};
-float angleMax[NUM_JOINTS] = {135, 120, -110, 1};
+float angleMin[NUM_JOINTS] = {45, 0, -170, 0};
+float angleMax[NUM_JOINTS] = {135, 135, -110, 1};
 
 int angleToTick(Joint joint, float angle)
 {
