@@ -53,7 +53,7 @@ def ik(x, y, z):
 
     # 5) θ₂, θ₃
     theta2 = DAE + CAD - BAC
-    theta3 = ACD - (2 * BAC) - math.pi / 2 + DAE
+    theta3 = ACD + BAC - math.pi
 
     return math.degrees(theta1), math.degrees(theta2), math.degrees(theta3)
 
