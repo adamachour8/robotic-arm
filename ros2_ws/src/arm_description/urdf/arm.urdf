@@ -69,5 +69,22 @@
         </visual>
     </link>
 
+    <joint name="teta_3" type="revolute">
+        <parent link="link_2"/>
+        <child link="link_3"/>
+        <origin xyz="0.01 -0.05 0.012" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-1.5708" upper="1.5708" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    <link name="link_3">
+        <visual>
+            <geometry>
+                <cylinder radius="0.01" length="0.14"/>
+            </geometry>
+            <origin xyz="0 -0.005 0.06" rpy="0 0 0"/>
+            <material name="black" />
+        </visual>
+    </link>
 
 </robot>
