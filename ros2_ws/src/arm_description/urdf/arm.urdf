@@ -72,17 +72,40 @@
     <joint name="teta_3" type="revolute">
         <parent link="link_2"/>
         <child link="link_3"/>
-        <origin xyz="0.01 -0.05 0.012" rpy="0 0 0"/>
+        <origin xyz="0.025 0.05 0.12" rpy="0 0 0"/>
         <axis xyz="0 1 0"/>
-        <limit lower="-1.5708" upper="1.5708" effort="1.0" velocity="1.0"/>
+        <limit lower="0" upper="1.5708" effort="1.0" velocity="1.0"/>
     </joint>
 
     <link name="link_3">
         <visual>
             <geometry>
-                <cylinder radius="0.01" length="0.14"/>
+                <cylinder radius="0.01" length="0.13"/>
             </geometry>
-            <origin xyz="0 -0.005 0.06" rpy="0 0 0"/>
+            <origin xyz="0.055 0.005 0" rpy="0 1.5708 0"/>
+            <material name="green" />
+        </visual>
+        <visual>
+            <geometry>
+                <box size="0.027 0.06 0.03"/>
+            </geometry>
+            <origin xyz="0.12 -0.02 0" rpy="0 0 0"/>
+            <material name="green"/>
+        </visual>
+    </link>
+
+    <joint name="gripper_joint" type="fixed">
+        <parent link="link_3"/>
+        <child link="gripper"/>
+        <origin xyz="0.1335 -0.024 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="gripper">
+        <visual>
+            <geometry>
+                <cylinder radius="0.01" length="0.085"/>
+            </geometry>
+            <origin xyz="0.0425 0 0" rpy="0 1.5708 0"/>
             <material name="black" />
         </visual>
     </link>
